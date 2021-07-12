@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abhisar's Meeting room</title>
+    <link rel="stylesheet" href="style2.css" />
+    <script>
+
+        // The function which redirects the user to the chat room with the given room ID
+        function gotoroom() {
+            const roomID = document.getElementById("fetchID").value;
+            window.location.href = `/${roomID}`;
+            return false;
+        };
+
+        //The function that makes the unique chat room with the user entered room ID
+        function makeroom() {
+            const roomID = document.getElementById("getID").value;
+            window.location.href = `/${roomID}`;
+            return false;
+        };
+
+        //The function that takes in the username entered by the user
+        function getusername(){
+            const username = document.getElementById("nameOfUser").value;
+            localStorage.setItem("koala", username);
+        };
+
+        //The function that loads a preset username "guest" in case the user has not entered anything in the username field
+        function load(){
+            const username = localStorage.getItem("koala");
+            if(username)
+            document.getElementById("nameOfUser").defaultValue = username;
+        };
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="navbar">
+            <img class="logo" src="logo.png">
+        </nav>
+
+        <div class="center">
+            <form onsubmit="return getusername()">
+                USERNAME:<br>
+                <input type="text" id="nameOfUser" class="boxes">
+            </form>
+    
+            <br>
+    
+            <a href="roomdef" class="make-room">Click to create a new chat room</a><br> <br>OR<br> 
+    
+            <form onsubmit="return makeroom()">
+                Create a chat room with custom ID:<br>
+                <input type="text" id="getID" class="boxes">
+            </form>
+    
+            <br>OR<br>
+    
+            <form onsubmit="return gotoroom()">
+                Enter room ID to join:<br>
+                <input type="text" id="fetchID" class="boxes">
+            </form>
+        </div>
+        
+    </div>
+<script>load()</script>
+</body>
+
+</html>
